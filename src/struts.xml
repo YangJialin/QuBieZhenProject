@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+<struts>
+    <constant name="struts.locale" value="zh_CN"></constant>
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.serve.static.browserCache" value="false"></constant>
+    <constant name="struts.devMode" value="false"></constant>
+    <constant name="struts.i18n.reload" value="true"></constant>
+    <constant name="struts.configuration.xml.reload" value="true"></constant>
+
+    <package name="user" namespace="/" extends="json-default">
+        <action name="login" class="com.qubiezhen.actions.UserAction" method="login">
+            <result name="success">/index.jsp</result>
+            <result name="error">pages/login.jsp</result>
+        </action>
+
+        <action name="register" class="com.qubiezhen.actions.UserAction" method="register">
+            <result name="success">/index.jsp</result>
+            <result name="error">pages/register.jsp</result>
+        </action>
+
+        <action name="get2HandGoodsDetail" class="com.qubiezhen.actions.SecendHandGoodAction"
+                method="querySecendHandGoodsById">
+            <result name="success">/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error">/pages/SecendHandsGoodsShop.jsp</result>
+        </action>
+
+        <action name="getCartCount" class="com.qubiezhen.actions.SecendHandGoodsShopAction" method="queryCartCount">
+            <result name="success" type="json">/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error" type="json">/pages/SecendHandsGoodsShop.jsp</result>
+        </action>
+        <action name="addToCart" class="com.qubiezhen.actions.SecendHandGoodsShopAction" method="addToCart">
+            <result name="success" type="json">/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error" type="json">/pages/SecendHandsGoodsShop.jsp</result>
+        </action>
+
+        <action name="getCartDetail" class="com.qubiezhen.actions.SecendHandGoodsShopAction" method="queryCartDetail">
+            <result name="success" type="json">/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error" type="json">/pages/SecendHandsGoodsShop.jsp</result>
+        </action>
+
+        <action name="createOrder" class="com.qubiezhen.actions.OrderAction" method="createOrder">
+            <result name="success">/pages/order.jsp</result>
+            <result name="error">/pages/order.jsp</result>
+        </action>
+        <action name="getOrderDetail" class="com.qubiezhen.actions.OrderAction" method="queryOrderDetail">
+            <result name="success" type="json">/pages/order.jsp</result>
+            <result name="error" type="json">/pages/order.jsp</result>
+        </action>
+
+        <action name="payOrder" class="com.qubiezhen.actions.OrderAction" method="payOrder">
+            <result name="success" type="json">/pages/order.jsp</result>
+            <result name="error" type="json">/pages/order.jsp</result>
+        </action>
+        <action name="deleteFromCart" class="com.qubiezhen.actions.SecendHandGoodsShopAction" method="deleteFromCart">
+            <result name="success">/pages/cart.jsp</result>
+            <result name="error">/pages/cart.jsp</result>
+        </action>
+        <action name="addSecendHandGoods" class="com.qubiezhen.actions.SecendHandGoodAction"
+                method="addSecendHandGoods">
+            <result name="success">/pages/userPage.jsp</result>
+            <result name="error">/pages/userPage.jsp</result>
+        </action>
+        <action name="addAskToBuy" class="com.qubiezhen.actions.AskToBuyAction"
+                method="addAskToBuy">
+            <result name="success">/pages/userPage.jsp</result>
+            <result name="error">/pages/userPage.jsp</result>
+        </action>
+        <action name="getAskToBuyList" class="com.qubiezhen.actions.AskToBuyAction"
+                method="queryAskToBuyList">
+            <result name="success" type="json">/pages/AskToBuyShop.jsp</result>
+            <result name="error" type="json">/pages/AskToBuyShop.jsp</result>
+        </action>
+
+
+        <action name="modifyUserImg" class="com.qubiezhen.actions.UserAction"
+                method="modifyUserImg">
+            <result name="success">/pages/userPage.jsp</result>
+            <result name="error">/pages/userPage.jsp</result>
+        </action>
+
+        <action name="addLeaveMessage" class="com.qubiezhen.actions.LeaveMessageAction"
+                method="addLeaveMessage">
+            <result name="success">/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error">/pages/SecendHandGoodsDetail.jsp</result>
+        </action>
+        <action name="getLeaveMessage" class="com.qubiezhen.actions.LeaveMessageAction"
+                method="queryLeaveMessage">
+            <result name="success" type="json">/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error" type="json">/pages/SecendHandGoodsDetail.jsp</result>
+        </action>
+
+        <action name="viewImg" class="com.qubiezhen.actions.OutputImgAction" method="viewImages">
+
+        </action>
+        <action name="getUserSellBuyCount" class="com.qubiezhen.actions.getInfoAction" method="queryUserSellBuyCount">
+            <result name="success" type="json"></result>
+            <result name="error" type="json"></result>
+        </action>
+
+        <action name="getOtherUserInfo" class="com.qubiezhen.actions.getInfoAction" method="queryUserInfoById">
+            <result name="success">/pages/otherUserPage.jsp</result>
+            <result name="error">/pages/AskToBuyShop.jsp</result>
+        </action>
+
+
+    </package>
+    <package name="admin" namespace="/admin" extends="json-default">
+
+        <action name="login" class="com.qubiezhen.actions.AdminAction" method="login">
+            <result name="success">/admin/adminMain.jsp</result>
+            <result name="error">/admin/adminLogin.jsp</result>
+        </action>
+
+        <action name="logout" class="com.qubiezhen.actions.AdminAction" method="logout">
+            <result>/admin/adminLogin.jsp</result>
+        </action>
+
+        <action name="getProvince" class="com.qubiezhen.actions.getInfoAction" method="queryProvince">
+            <result type="json" name="success">/admin/pages/AddUser.jsp</result>
+            <result type="json" name="error">/admin/pages/AddUser.jsp</result>
+        </action>
+
+        <action name="getCity" class="com.qubiezhen.actions.getInfoAction" method="queryCitys">
+            <result type="json" name="success">/admin/pages/AddUser.jsp</result>
+            <result type="json" name="error">/admin/pages/AddUser.jsp</result>
+        </action>
+
+        <action name="addUser" class="com.qubiezhen.actions.UserAction" method="addUser">
+            <result name="success">/admin/pages/AddUser.jsp</result>
+            <result name="error">/admin/pages/AddUser.jsp</result>
+        </action>
+
+        <action name="SearchUser" class="com.qubiezhen.actions.getInfoAction" method="queryUserInfo">
+            <result name="success" type="json">/admin/pages/UserSearch.jsp</result>
+            <result name="error" type="json">/admin/pages/UserSearch.jsp</result>
+        </action>
+        <action name="getUserInfoDetail" class="com.qubiezhen.actions.getInfoAction" method="queryUserInfoById">
+            <result name="success">/admin/pages/UserInfoDetail.jsp</result>
+            <result name="error">/admin/pages/UserSearch.jsp</result>
+        </action>
+        <action name="getUserInfoDetailforModify" class="com.qubiezhen.actions.getInfoAction"
+                method="queryUserInfoById">
+            <result name="success" type="json">/admin/pages/UserInfoDetail.jsp</result>
+            <result name="error" type="json">/admin/pages/UserInfoDetail.jsp</result>
+        </action>
+
+        <action name="modifyUser" class="com.qubiezhen.actions.AdminAction" method="modifyUser">
+            <result name="success">/admin/pages/UserSearch.jsp</result>
+            <result name="error">/admin/pages/UserInfoDetail.jsp</result>
+        </action>
+
+        <action name="deleteUser" class="com.qubiezhen.actions.AdminAction" method="deleteUser">
+            <result name="success">/admin/pages/UserSearch.jsp</result>
+            <result name="error">/admin/pages/UserInfoDetail.jsp</result>
+        </action>
+
+        <action name="addSecendHandGoods" class="com.qubiezhen.actions.SecendHandGoodAction"
+                method="addSecendHandGoods">
+            <result name="success">/admin/pages/Add2HandGoods.jsp</result>
+            <result name="error">/admin/pages/Add2HandGoods.jsp</result>
+        </action>
+        <action name="addNotice" class="com.qubiezhen.actions.NoticeAction" method="addNotice">
+            <result name="success">/admin/pages/addNotice.jsp</result>
+            <result name="error">/admin/pages/addNotice.jsp</result>
+        </action>
+
+        <action name="queryNotice" class="com.qubiezhen.actions.NoticeAction" method="queryNotice">
+            <result name="success" type="json">/admin/pages/SearchNotice.jsp</result>
+            <result name="error" type="json">/admin/pages/SearchNotice.jsp</result>
+        </action>
+        <action name="queryNoticeById" class="com.qubiezhen.actions.NoticeAction" method="queryNoticeById">
+            <result name="success">/admin/pages/NoticeDetails.jsp</result>
+            <result name="error">/admin/pages/SearchNotice.jsp</result>
+        </action>
+        <action name="queryNoticeByIdForModify" class="com.qubiezhen.actions.NoticeAction" method="queryNoticeById">
+            <result name="success" type="json">/admin/pages/NoticeDetails.jsp</result>
+            <result name="error" type="json">/admin/pages/SearchNotice.jsp</result>
+        </action>
+        <action name="deleteNotice" class="com.qubiezhen.actions.NoticeAction" method="deleteNotice">
+            <result name="success">/admin/pages/SearchNotice.jsp</result>
+            <result name="error">/admin/pages/NoticeDetails.jsp</result>
+        </action>
+        <action name="modifyNotice" class="com.qubiezhen.actions.NoticeAction" method="modifyNotice">
+            <result name="success">/admin/pages/SearchNotice.jsp</result>
+            <result name="error">/admin/pages/NoticeDetails.jsp</result>
+        </action>
+
+        <action name="getGoodsType" class="com.qubiezhen.actions.getInfoAction" method="queryGoodsType">
+            <result name="success" type="json">/admin/pages/Add2HandGoods.jsp</result>
+            <result name="error" type="json">/admin/pages/Add2HandGoods.jsp</result>
+        </action>
+        <action name="get2HandGoodsList" class="com.qubiezhen.actions.SecendHandGoodAction"
+                method="querySecendHandGoodsList">
+            <result name="success" type="json">/admin/pages/Add2HandGoods.jsp</result>
+            <result name="error" type="json">/admin/pages/Add2HandGoods.jsp</result>
+        </action>
+
+        <action name="get2HandGoodsDetail" class="com.qubiezhen.actions.SecendHandGoodAction"
+                method="querySecendHandGoodsById">
+            <result name="success">/admin/pages/SecendHandGoodsDetail.jsp</result>
+            <result name="error">/admin/pages/Search2HandGoods.jsp</result>
+        </action>
+
+        <action name="delete2HandGoods" class="com.qubiezhen.actions.SecendHandGoodAction" method="delete2HandGoods">
+            <result name="success">/admin/pages/Search2HandGoods.jsp</result>
+            <result name="error">/admin/pages/Search2HandGoods.jsp</result>
+        </action>
+
+        <action name="modify2HandGoods" class="com.qubiezhen.actions.SecendHandGoodAction" method="modify2HandGoods">
+            <result name="success">/admin/pages/Search2HandGoods.jsp</result>
+            <result name="error">/admin/pages/Search2HandGoods.jsp</result>
+        </action>
+
+        <action name="get2HandGoodsDetailforModify" class="com.qubiezhen.actions.SecendHandGoodAction"
+                method="querySecendHandGoodsById">
+            <result name="success" type="json">/admin/pages/Modify2HandGoods.jsp</result>
+            <result name="error" type="json">/admin/pages/Search2HandGoods.jsp</result>
+        </action>
+        <action name="getOrderByUser" class="com.qubiezhen.actions.OrderAction" method="queryOrderByUser">
+            <result name="success" type="json">/admin/adminMain.jsp</result>
+            <result name="error" type="json">/admin/adminMain.jsp</result>
+        </action>
+
+        <action name="getOrderList" class="com.qubiezhen.actions.OrderAction" method="queryOrderList">
+            <result name="success" type="json">/admin/pages/SearchOrder.jsp</result>
+            <result name="error" type="json">/admin/pages/SearchOrder.jsp</result>
+        </action>
+
+        <action name="getOrderDetail" class="com.qubiezhen.actions.OrderAction" method="queryOrderDetail">
+            <result name="success">/admin/pages/OrderDetails.jsp</result>
+            <result name="error">/admin/pages/SearchOrder.jsp</result>
+        </action>
+
+        <action name="viewImg" class="com.qubiezhen.actions.OutputImgAction" method="viewImages">
+
+        </action>
+        <action name="getCount" class="com.qubiezhen.actions.getInfoAction" method="getCount">
+            <result name="success" type="json">/admin/adminMain.jsp</result>
+            <result name="error" type="json">/admin/adminMain.jsp</result>
+        </action>
+
+        <action name="addAskToBuy" class="com.qubiezhen.actions.AskToBuyAction"
+                method="addAskToBuy">
+            <result name="success">/admin/pages/SearchAskToBuy.jsp</result>
+            <result name="error">/admin/pages/AddAskToBuy.jsp</result>
+        </action>
+
+        <action name="getAskToBuyList" class="com.qubiezhen.actions.AskToBuyAction"
+                method="queryAskToBuyList">
+            <result name="success" type="json">/admin/pages/SearchAskToBuy.jsp</result>
+            <result name="error" type="json">/admin/pages/SearchAskToBuy.jsp</result>
+        </action>
+        <action name="getAskToBuyDetails" class="com.qubiezhen.actions.AskToBuyAction"
+                method="queryAskToBuyDetails">
+            <result name="success">/admin/pages/AskToBuyDetail.jsp</result>
+            <result name="error">/admin/pages/SearchAskToBuy.jsp</result>
+        </action>
+    </package>
+</struts>

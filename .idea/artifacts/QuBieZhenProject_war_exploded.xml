@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="QuBieZhenProject:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/QuBieZhenProject_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="QuBieZhenProject/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="QuBieZhenProject" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/../../tools/mysql-connector-java-5.1.39-bin.jar" />
+          <element id="library" level="application" name="struts" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
